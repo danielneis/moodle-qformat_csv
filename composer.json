@@ -1,0 +1,11 @@
+{
+    "name": "bla/moodle-qformat_csv",
+    "type": "moodle-qformat",
+    "require": {
+        "composer/installers": "~1.0",
+        "phpoffice/phpspreadsheet": "^1.19"
+    },
+    "extra": {
+        "installer-name": "grid"
+    }
+}
