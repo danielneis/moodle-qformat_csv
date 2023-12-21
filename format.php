@@ -83,21 +83,21 @@ class qformat_csv extends qformat_default {
         $spreadsheet = $reader->load($filename);
         $worksheet = $spreadsheet->getActiveSheet();
         $lines = [];
-        for ($i = 2; $i <= 1454; $i += 4) {
+        for ($i = 2; $i <= 162; $i += 4) {
             $lines[] = [
                 'name' => $worksheet->getCell('A' . $i)->getValue(),
-                'questiontext' => $worksheet->getCell('E' . $i)->getValue() . '<br/>' . $worksheet->getCell('I' . $i)->getValue(),
+                'questiontext' => $worksheet->getCell('C' . $i)->getValue() . '<br/>' . $worksheet->getCell('D' . $i)->getValue(),
                 'answer' => [
-                    $this->text_field($worksheet->getCell('F' . $i)->getValue()),
-                    $this->text_field($worksheet->getCell('F' . (string)($i + 1))->getValue()),
-                    $this->text_field($worksheet->getCell('F' . (string)($i + 2))->getValue()),
-                    $this->text_field($worksheet->getCell('F' . (string)($i + 3))->getValue()),
+                    $this->text_field($worksheet->getCell('E' . $i)->getValue()),
+                    $this->text_field($worksheet->getCell('E' . (string)($i + 1))->getValue()),
+                    $this->text_field($worksheet->getCell('E' . (string)($i + 2))->getValue()),
+                    $this->text_field($worksheet->getCell('E' . (string)($i + 3))->getValue()),
                 ],
                 'fraction' => [
-                    $worksheet->getCell('G' . $i)->getValue() == 1 ? 1 : 0,
-                    $worksheet->getCell('G' . $i)->getValue() == 2 ? 1 : 0,
-                    $worksheet->getCell('G' . $i)->getValue() == 3 ? 1 : 0,
-                    $worksheet->getCell('G' . $i)->getValue() == 4 ? 1 : 0,
+                    $worksheet->getCell('F' . $i)->getValue() == 'a' ? 1 : 0,
+                    $worksheet->getCell('F' . $i)->getValue() == 'b' ? 1 : 0,
+                    $worksheet->getCell('F' . $i)->getValue() == 'c' ? 1 : 0,
+                    $worksheet->getCell('F' . $i)->getValue() == 'd' ? 1 : 0,
                 ],
                 'feedback' => [
                     $this->text_field(''),
@@ -105,7 +105,7 @@ class qformat_csv extends qformat_default {
                     $this->text_field(''),
                     $this->text_field('')
                 ],
-                'generalfeedback' => $worksheet->getCell('H' . $i)->getValue() . '<br/>' . $worksheet->getCell('J' . $i)->getValue(),
+                'generalfeedback' => $worksheet->getCell('G' . $i)->getValue() . '<br/>' . $worksheet->getCell('H' . $i)->getValue(),
                 'category' => trim($worksheet->getCell('B' . $i)->getValue())
             ];
         }
